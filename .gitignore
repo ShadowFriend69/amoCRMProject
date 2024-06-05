@@ -3,13 +3,13 @@
 .vscode/
 
 # Ignore vendor directory
-/vendor/
+backend/vendor/
 
 # Ignore composer.lock file
 composer.lock
 
 # Ignore Python virtual environment directory
-/venv/
+checker/venv/
 
 # Ignore Docker artifacts
 /docker-compose.override.yml
