@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+      - elasticsearch
+
+  checker:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.checker
+    depends_on:
+      - redis
+      - elasticsearch
+
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+
+  elasticsearch:
+    image: "elasticsearch:7.9.3"
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+

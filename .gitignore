@@ -1,0 +1,26 @@
+# Ignore IDE files
+.idea/
+.vscode/
+
+# Ignore vendor directory
+/vendor/
+
+# Ignore composer.lock file
+composer.lock
+
+# Ignore Python virtual environment directory
+/venv/
+
+# Ignore Docker artifacts
+/docker-compose.override.yml
+/docker-compose.yml
+/docker/.env
+
+# Ignore any local configuration files
+.env
+
+# Ignore any log files
+/log/
+
+# Ignore any temporary files or directories
+/tmp/

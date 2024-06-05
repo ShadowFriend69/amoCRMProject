@@ -1,0 +1,5 @@
+FROM python:3.8-slim
+COPY checker/ /app
+WORKDIR /app
+RUN pip install requests redis elasticsearch
+CMD ["python", "main.py"]

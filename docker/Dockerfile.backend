@@ -1,0 +1,6 @@
+FROM php:8.0-cli
+COPY backend/ /app
+WORKDIR /app
+RUN curl -sS https://getcomposer.org/installer | php
+RUN php composer.phar install
+CMD ["php", "-S", "0.0.0.0:8080", "-t", "/app"]
