@@ -12,14 +12,14 @@
 
 1. Клонируйте репозиторий:
 
-```bash
-git clone  https://github.com/ShadowFriend69/amoCRMProject.git
-```
+   ```bash
+   git clone  https://github.com/ShadowFriend69/amoCRMProject.git
+   ```
 
 2. Для сборки и запуска контейнеров выполните следующую команду в терминале:
-```bash
-docker-compose up --build
-```
+   ```bash
+   docker-compose up --build
+   ```
 
 ## Запуск веб-сервера PHP
 
@@ -34,14 +34,14 @@ docker-compose up --build
 ## Проверка работоспособности
 
 После запуска контейнеров, откройте браузер и перейдите по адресу:
-```bash
-http://localhost:8024
-```
+   ```bash
+   http://localhost:8024
+   ```
 
 Для проверки API выполните запрос:
-```bash
-curl "http://localhost:8024/check?url=http://example.com"
-```
+   ```bash
+   curl "http://localhost:8024/check?url=http://example.com"
+   ```
 
 ## Описание сервисов
 
@@ -54,21 +54,54 @@ curl "http://localhost:8024/check?url=http://example.com"
 - **Параметры**: url (URL сайта для проверки)
 - **Ответ**: JSON с результатами проверки
 Пример запроса:
-```bash
-http://localhost:8024/check?url=http://example.com
-```
+   ```bash
+   http://localhost:8024/check?url=http://example.com
+   ```
 
 ### checker
 Сервис `checker` написан на Python и выполняет проверку сайтов.
 
 ## Логи
 Для просмотра логов контейнера `backend`, выполните команду:
-```bash
-docker logs <backend_container_id>
-```
+   ```bash
+   docker logs <backend_container_id>
+   ```
 
 Для получения ID контейнера используйте команду:
-```bash
-docker ps
-```
+   ```bash
+   docker ps
+   ```
+## Просмотр данных в Redis
+### Использование командной строки Redis
+- **Подключитесь к контейнеру Redis**:
+   ```bash
+   docker exec -it <redis_container_id> sh
+   redis-cli
+   ```
+
+- **Просмотр всех ключей**
+   ```bash
+   KEYS *
+   ```
+- **Получение значения ключа**
+   ```bash
+   GET <key>
+   ```
+
+## Просмотр данных в Elasticsearch
+### Подключитесь к контейнеру Elasticsearch:
+   
+   ```bash 
+   docker exec -it <elasticsearch_container_id> sh
+   ```
+
+- **Просмотр всех индексов**
+   ```
+   bash curl -X GET "localhost:8024/_cat/indices?v"
+   ```
+
+- **Поиск документов в индексе**
+   ```
+   bash curl -X GET "localhost:8024/<index_name>/_search?pretty"
+    ```
 
